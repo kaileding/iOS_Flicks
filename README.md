@@ -17,7 +17,7 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [√] Add a tab bar for **Now Playing** and **Top Rated** movies.
-- [ ] Implement segmented control to switch between list view and grid view.
+- [√] Implement segmented control to switch between list view and grid view.
 - [√] Add a search bar.
 - [√] All images fade in.
 - [√] For the large poster, load the low-res image first, switch to high-res when complete.
@@ -34,7 +34,9 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/kaileding/iOS_Flicks/blob/master/demo1.gif' title='normal operations' width='' alt='Video Walkthrough' />
-<img src='https://github.com/kaileding/iOS_Flicks/blob/master/demo2.gif' title='network error' width='' alt='Video Walkthrough' />
+<img src='https://github.com/kaileding/iOS_Flicks/blob/master/demo2.gif' title='normal operations' width='' alt='Video Walkthrough' />
+<img src='https://github.com/kaileding/iOS_Flicks/blob/master/demo3.gif' title='normal operations' width='' alt='Video Walkthrough' />
+<img src='https://github.com/kaileding/iOS_Flicks/blob/master/demo4.gif' title='network error' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
