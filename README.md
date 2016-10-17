@@ -33,14 +33,15 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/kaileding/iOS_Flicks/blob/master/demo1.gif' title='normal operations' width='' alt='Video Walkthrough' />
+<img src='https://github.com/kaileding/iOS_Flicks/blob/master/demo2.gif' title='network error' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-I tried to fade in a background image of the movie when user taps on the table cell (highlighted), but the backgraound image shows on the entire screen instead of being constrainted within the single cell.
-I didn't put effort to get every information from API about the film to show in the details page (i.e. the rate and duration of the film), which may not be relevant to the objective of this project.
+- I tried to fade in a background image of the movie when user taps on the table cell (highlighted), but the backgraound image shows on the entire screen instead of being constrainted within the single cell.
+- I didn't put effort to get every information from API about the film to show in the details page (i.e. the rate and duration of the film), which may not be relevant to the objective of this project.
 
 ## License
 
