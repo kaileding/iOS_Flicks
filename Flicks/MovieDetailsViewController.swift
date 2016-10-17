@@ -17,12 +17,15 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var topOffsetView: UIView!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var bottomOffsetView: UIView!
+    @IBOutlet weak var warningVIew: UIView!
     
     @IBOutlet weak var movieName: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    
+    var noImg: Bool = false
     
     var imgUrl: String!
     var smallImgUrl: String!
@@ -68,6 +71,9 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if self.warningVIew.center.y > 0 {
+            self.warningVIew.center.y -= self.warningVIew.frame.size.height
+        }
         // set movie description background image
         fancyImgLoad()
         
@@ -135,29 +141,42 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
     }
 
     func fancyImgLoad() {
-        self.movieImage.setImageWith(
-            URLRequest(url: URL(string: self.smallImgUrl)!),
-            placeholderImage: UIImage(named: "video"),
-            success: { (smallImgRequest, smallImgResponse, smallImg) in
-                // smallImgResponse will be nil if the smallImg is already in cache
-                self.movieImage.alpha = 0.0
-                self.movieImage.image = smallImg
-                
-                UIView.animate(
-                    withDuration: 0.5,
-                    animations: {
-                        self.movieImage.alpha = 1.0
-                    },
-                    completion: { (success) -> Void in
-                        // one request per ImageView at a time
-                        self.movieImage.setImageWith(
-                            URLRequest(url: URL(string: self.largeImgUrl)!),
-                            placeholderImage: smallImg,
-                            success: { (largeImgRequest, largeImgResponse, largeImg) in
-                                self.movieImage.image = largeImg
-                            }, failure: nil)
-                })
-            },
-            failure: nil)
+        if noImg {
+            self.movieImage.image = UIImage(named: "video")
+        } else {
+            self.movieImage.setImageWith(
+                URLRequest(url: URL(string: self.smallImgUrl)!),
+                placeholderImage: UIImage(named: "video"),
+                success: { (smallImgRequest, smallImgResponse, smallImg) in
+                    // smallImgResponse will be nil if the smallImg is already in cache
+                    self.movieImage.alpha = 0.0
+                    self.movieImage.image = smallImg
+                    
+                    UIView.animate(
+                        withDuration: 0.5,
+                        animations: {
+                            self.movieImage.alpha = 1.0
+                        },
+                        completion: { (success) -> Void in
+                            // one request per ImageView at a time
+                            self.movieImage.setImageWith(
+                                URLRequest(url: URL(string: self.largeImgUrl)!),
+                                placeholderImage: smallImg,
+                                success: { (largeImgRequest, largeImgResponse, largeImg) in
+                                    self.movieImage.image = largeImg
+                                }, failure: nil)
+                    })
+                },
+                failure: { (smallImgRequest, smallImgResponse, err) in
+                    if self.warningVIew.center.y < 0 {
+                        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseInOut], animations: {
+                            self.warningVIew.center.y += self.warningVIew.frame.size.height
+                            }, completion: nil)
+                        UIView.animate(withDuration: 1.0, delay: 1.2, options: [.curveEaseInOut], animations: {
+                            self.warningVIew.center.y -= self.warningVIew.frame.size.height
+                            }, completion: nil)
+                    }
+            })
+        }
     }
 }

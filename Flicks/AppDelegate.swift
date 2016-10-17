@@ -21,20 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // set up the first view controller
         let nowPlayingView = MovieListViewController()
         nowPlayingView.requestURL = "https://api.themoviedb.org/3/movie/now_playing?api_key="
+        nowPlayingView.navBarTitle = "Cinema"
         let nowPlayingNavContr = UINavigationController(rootViewController: nowPlayingView)
         nowPlayingNavContr.navigationBar.barTintColor = UIColor(red: 256/255, green: 185.7/255, blue: 84.4/255, alpha: 1.0)
-        // nowPlayingNavContr.navigationBar.setBackgroundImage(UIImage(named: "rabbits")!, for: .default)
-        
         nowPlayingNavContr.tabBarItem.title = "Now Playing"
         nowPlayingNavContr.tabBarItem.image = UIImage(named: "movie")
         
         // set up the second view controller
         let topRatedView = MovieListViewController()
         topRatedView.requestURL = "https://api.themoviedb.org/3/movie/top_rated?api_key="
+        topRatedView.navBarTitle = "Rank"
         let topRatedNavContr = UINavigationController(rootViewController: topRatedView)
         topRatedNavContr.navigationBar.barTintColor = UIColor(red: 256/255, green: 185.7/255, blue: 84.4/255, alpha: 1.0)
-        // topRatedNavContr.navigationBar.setBackgroundImage(UIImage(named: "rabbits")!, for: .default)
-        
         topRatedNavContr.tabBarItem.title = "Top Rated"
         topRatedNavContr.tabBarItem.image = UIImage(named: "star")
         
