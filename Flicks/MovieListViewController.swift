@@ -186,7 +186,7 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! MovieBriefTableViewCell
-        cell.bkImage.alpha = 0.0
+        cell.bkImage.alpha = 0.4
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
